@@ -1,4 +1,6 @@
 Sprite ghost;
+Sprite bat;
+Sprite pumpkin;
 int coordX_perso=0;
 int coordY_perso=0;
 
@@ -19,6 +21,22 @@ void setup() {
   ghost.SpriteNumber (3, 4);
   ghost.SpriteOffset (1, 2);
   ghost.LoadSpriteSheet();
+
+  bat = new Sprite();
+  bat.SpriteSheetName ("Bat.png");
+  bat.SpriteDimension (16, 13);
+  bat.SpriteOrigin (0, 0);
+  bat.SpriteNumber (4, 1);
+  bat.SpriteOffset (0, 0);
+  bat.LoadSpriteSheet();
+
+  pumpkin = new Sprite();
+  pumpkin.SpriteSheetName ("Pumpkin.png");
+  pumpkin.SpriteDimension (16, 16);
+  pumpkin.SpriteOrigin (0, 0);
+  pumpkin.SpriteNumber (4, 1);
+  pumpkin.SpriteOffset (0, 0);
+  pumpkin.LoadSpriteSheet();
 }
 
 
@@ -28,9 +46,13 @@ void draw() {
   scale (4);
   if (frameCount>10) {
     ghost.Update();
+    bat.Update();
+    pumpkin.Update();
 
     frameCount=0;
   }
 
   ghost.Render(coordX_perso, coordY_perso);
+  bat.Render(coordX_perso - 20, coordY_perso);
+  pumpkin.Render(coordX_perso + 30, coordY_perso);
 }
