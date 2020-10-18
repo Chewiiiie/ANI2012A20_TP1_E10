@@ -1,7 +1,8 @@
-Sprite ghost;
+Personnage ghost;
 Sprite bat;
 Sprite pumpkin;
 Sprite candy;
+
 int coordX_perso=0;
 int coordY_perso=0;
 
@@ -18,13 +19,7 @@ void setup() {
   coordX_perso= width/8;
   coordY_perso= height/8;
 
-  ghost = new Sprite();
-  ghost.SpriteSheetName ("Ghost.png");
-  ghost.SpriteDimension (22, 23);
-  ghost.SpriteOrigin (2, 17);
-  ghost.SpriteNumber (3, 4);
-  ghost.SpriteOffset (1, 2);
-  ghost.LoadSpriteSheet();
+  ghost = new Personnage(coordX_perso, coordY_perso);
 
   bat = new Sprite();
   bat.SpriteSheetName ("Bat.png");
@@ -68,8 +63,6 @@ void setup() {
 void draw() {
   background(150);
 
-
-
   if (frameCount>10) {
     ghost.Update();
     bat.Update();
@@ -78,7 +71,6 @@ void draw() {
 
     frameCount=0;
   }
-
 
   fond2.Update();
   fond3.Update();
@@ -91,14 +83,7 @@ void draw() {
   fond10.Update();
   fond11.Update();
 
-    scale (4);
-  ghost.Render(coordX_perso, coordY_perso);
-  bat.Render(coordX_perso - 20, coordY_perso);
-  pumpkin.Render(coordX_perso + 30, coordY_perso);
-  candy.Render(coordX_perso, coordY_perso + 20);
-  
-    scale (0);
-      image (fond1, 0, 0);
+  image (fond1, 0, 0);
   fond2.Render();
   fond3.Render();
   fond4.Render();
@@ -109,5 +94,17 @@ void draw() {
   fond9.Render();
   fond10.Render();
   fond11.Render();
-  
+
+  scale (3);
+  ghost.Render();
+  bat.Render(coordX_perso - 20, coordY_perso);
+  pumpkin.Render(coordX_perso + 30, coordY_perso);
+  candy.Render(coordX_perso, coordY_perso + 20);
+  scale (0);
+}
+
+void keyPressed() {
+  if (key == CODED) {
+    ghost.Movement();
+  }
 }
