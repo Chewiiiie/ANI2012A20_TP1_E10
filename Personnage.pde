@@ -8,7 +8,7 @@ class Personnage {
   Personnage (int originX, int originY) {
     shape = new Sprite();
     shape.SpriteSheetName ("Ghost.png");
-    shape.SpriteDimension (22, 23);
+    shape.SpriteDimension (22, 23, 4);
     shape.SpriteOrigin (2, 17);
     shape.SpriteNumber (3, 4);
     shape.SpriteOffset (1, 2);
@@ -28,18 +28,23 @@ class Personnage {
 
 
   void Movement () {
+
     switch (keyCode) {
     case LEFT : 
-      coordX_perso += - 1;
+      if (coordX_perso > 0)
+        coordX_perso += - 1;
       break;
     case RIGHT :
-      coordX_perso += 1;
+      if ((coordX_perso + shape.spriteWidth) * shape.sizeFactor < width)
+        coordX_perso += 1;
       break;
     case UP :
-      coordY_perso += - 1;
+      if (coordY_perso > 0)
+        coordY_perso += - 1;
       break;
     case DOWN :
-      coordY_perso += 1;
+      if ((coordY_perso + shape.spriteHeight) * shape.sizeFactor < height)
+        coordY_perso += 1;
       break;
     }
   }

@@ -23,7 +23,7 @@ void setup() {
 
   bat = new Sprite();
   bat.SpriteSheetName ("Bat.png");
-  bat.SpriteDimension (16, 13);
+  bat.SpriteDimension (16, 13, 4);
   bat.SpriteOrigin (0, 0);
   bat.SpriteNumber (4, 1);
   bat.SpriteOffset (0, 0);
@@ -31,7 +31,7 @@ void setup() {
 
   pumpkin = new Sprite();
   pumpkin.SpriteSheetName ("Pumpkin.png");
-  pumpkin.SpriteDimension (16, 16);
+  pumpkin.SpriteDimension (16, 16, 5);
   pumpkin.SpriteOrigin (0, 0);
   pumpkin.SpriteNumber (4, 1);
   pumpkin.SpriteOffset (0, 0);
@@ -39,7 +39,7 @@ void setup() {
 
   candy = new Sprite();
   candy.SpriteSheetName ("Candy.png");
-  candy.SpriteDimension (20, 20);
+  candy.SpriteDimension (20, 20, 2);
   candy.SpriteOrigin (0, 0);
   candy.SpriteNumber (1, 1);
   candy.SpriteOffset (0, 0);
@@ -95,12 +95,10 @@ void draw() {
   fond10.Render();
   fond11.Render();
 
-  scale (3);
   ghost.Render();
   bat.Render(coordX_perso - 20, coordY_perso);
   pumpkin.Render(coordX_perso + 30, coordY_perso);
   candy.Render(coordX_perso, coordY_perso + 20);
-  scale (0);
 }
 
 void keyPressed() {

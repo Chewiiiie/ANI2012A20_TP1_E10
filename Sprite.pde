@@ -4,9 +4,11 @@ class Sprite {
   private PImage spriteSheet;
   private String sheetName;
   //Option pour le traitement de la sprite sheet
-  private int spriteWidth, spriteHeight, xOrigin, yOrigin;
+  int spriteWidth, spriteHeight;
+  private int xOrigin, yOrigin;
   private int nWidth, nHeight;
-  private int xOffset, yOffset;
+   int xOffset, yOffset;
+  private int sizeFactor;
   //Element logique
   private int index;
 
@@ -25,6 +27,8 @@ class Sprite {
     yOffset = 0;
     //Nom de la feuille
     sheetName = "";
+    //Facteur pour la taille
+    sizeFactor = 1;
 
     index = 0;
   }
@@ -53,6 +57,13 @@ class Sprite {
     spriteWidth = w;
     spriteHeight = h;
   }
+  
+    //w et h n'a de valeur qu'entre les accolades
+  void SpriteDimension(int w, int h, int s) {
+    spriteWidth = w;
+    spriteHeight = h;
+    sizeFactor = s;
+  }
 
   void SpriteOrigin(int x, int y) {
     xOrigin = x;
@@ -69,11 +80,14 @@ class Sprite {
     yOffset = y;
   }
 
-  void Update () {
+  void Update() {
     index = (index + 1 >= (nWidth * nHeight)) ? 0 : index + 1;
   }
 
   void Render (float x, float y) {
+    pushMatrix();
+    scale (sizeFactor);
     image (spriteGrid[index], x, y);
+    popMatrix();
   }
 }
