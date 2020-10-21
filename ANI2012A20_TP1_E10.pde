@@ -3,6 +3,7 @@ static final int JEU = 1;
 static final int COMMANDES = 2;
 int ecran = MENU;
 Menu main;
+Bouton boutonRetour;
 
 Personnage ghost;
 Sprite bat;
@@ -22,6 +23,7 @@ void setup() {
   frameRate(25);
 
   main = new Menu();
+  boutonRetour = new Bouton("", Bouton.FLECHE);
 
   coordX_perso= width/8;
   coordY_perso= height/8;
@@ -110,7 +112,8 @@ void draw() {
     pumpkin.Render(coordX_perso + 30, coordY_perso);
     candy.Render(coordX_perso, coordY_perso + 20);
   } else if (ecran == COMMANDES) {
-    background (155, 0, 0);
+    background (0);
+    boutonRetour.Render();
   }
 }
 
@@ -126,7 +129,7 @@ void mousePressed() {
   }
 
   if (mouseButton == LEFT && ecran == COMMANDES) { 
-    /*if (boutonRetour.CheckIn () == true)
-      ecran = MENU;*/
+    if (boutonRetour.CheckIn () == true)
+      ecran = MENU;
   }
 }
