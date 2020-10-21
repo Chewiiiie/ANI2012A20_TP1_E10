@@ -1,6 +1,8 @@
 static final int MENU = 0;
 static final int JEU = 1;
 static final int COMMANDES = 2;
+int ecran = MENU;
+Menu main;
 
 Personnage ghost;
 Sprite bat;
@@ -19,6 +21,7 @@ void setup() {
   size(900, 650);
   frameRate(25);
 
+  main = new Menu();
 
   coordX_perso= width/8;
   coordY_perso= height/8;
@@ -65,48 +68,65 @@ void setup() {
 
 
 void draw() {
-  background(150);
 
-  if (frameCount>10) {
-    ghost.Update();
-    bat.Update();
-    pumpkin.Update();
-    candy.Update();
+  if (ecran == MENU)
+    main.Render();
 
-    frameCount=0;
+  else if (ecran == JEU) {
+    if (frameCount>10) {
+      ghost.Update();
+      bat.Update();
+      pumpkin.Update();
+      candy.Update();
+
+      frameCount=0;
+    }
+
+    fond2.Update();
+    fond3.Update();
+    fond4.Update();
+    fond5.Update();
+    fond6.Update();
+    fond7.Update();
+    fond8.Update();
+    fond9.Update();
+    fond10.Update();
+    fond11.Update();
+
+    image (fond1, 0, 0);
+    fond2.Render();
+    fond3.Render();
+    fond4.Render();
+    fond5.Render();
+    fond6.Render();
+    fond7.Render();
+    fond8.Render();
+    fond9.Render();
+    fond10.Render();
+    fond11.Render();
+
+    ghost.Render();
+    bat.Render(coordX_perso - 20, coordY_perso);
+    pumpkin.Render(coordX_perso + 30, coordY_perso);
+    candy.Render(coordX_perso, coordY_perso + 20);
+  } else if (ecran == COMMANDES) {
+    background (155, 0, 0);
   }
-
-  fond2.Update();
-  fond3.Update();
-  fond4.Update();
-  fond5.Update();
-  fond6.Update();
-  fond7.Update();
-  fond8.Update();
-  fond9.Update();
-  fond10.Update();
-  fond11.Update();
-
-  image (fond1, 0, 0);
-  fond2.Render();
-  fond3.Render();
-  fond4.Render();
-  fond5.Render();
-  fond6.Render();
-  fond7.Render();
-  fond8.Render();
-  fond9.Render();
-  fond10.Render();
-  fond11.Render();
-
-  ghost.Render();
-  bat.Render(coordX_perso - 20, coordY_perso);
-  pumpkin.Render(coordX_perso + 30, coordY_perso);
-  candy.Render(coordX_perso, coordY_perso + 20);
 }
 
 void keyPressed() {
   if (key == CODED) {
     ghost.Movement();
+  }
+}
+
+void mousePressed() {
+  if (mouseButton == LEFT && ecran == MENU) { 
+    ecran = main.ButtonPress();
+  }
+
+  if (mouseButton == LEFT && ecran == COMMANDES) { 
+    /*if (boutonRetour.CheckIn () == true)
+      ecran = MENU;*/
   }
 }
