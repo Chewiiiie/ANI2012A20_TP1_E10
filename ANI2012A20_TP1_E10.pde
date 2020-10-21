@@ -1,3 +1,7 @@
+static final int MENU = 0;
+static final int JEU = 1;
+static final int COMMANDES = 2;
+
 Personnage ghost;
 Sprite bat;
 Sprite pumpkin;
