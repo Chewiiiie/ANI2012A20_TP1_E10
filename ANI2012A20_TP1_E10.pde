@@ -61,13 +61,6 @@ void setup() {
   pumpkin.LoadSpriteSheet();
 
   candy = new Sprite();
-  candy.SpriteSheetName ("Candy.png");
-  candy.SpriteDimension (20, 20, 2);
-  candy.SpriteOrigin (0, 0);
-  candy.SpriteNumber (1, 1);
-  candy.SpriteOffset (0, 0);
-  candy.LoadSpriteSheet();
-
 
   fond1 = loadImage("Fond1.png");
   fond2 = new Parallax("Fond2.png", 1, height);
@@ -93,7 +86,7 @@ void draw() {
       ghost.Update();
       bat.Update();
       pumpkin.Update();
-      candy.Update();
+      //candy.Update();
 
       frameCount=0;
     }
@@ -122,9 +115,9 @@ void draw() {
     fond11.Render();
 
     ghost.Render();
-    bat.Render(coordX_perso - 20, coordY_perso);
-    pumpkin.Render(coordX_perso + 30, coordY_perso);
-    candy.Render(coordX_perso, coordY_perso + 20);
+    bat.Render((width/4) - 10 , coordY_perso - 20);
+    pumpkin.Render((width/5) - 10, coordY_perso - 25);
+    //candy.Render((width/2) - 10, coordY_perso + 145);
   } else if (ecran == COMMANDES) {
     background (0);
     boutonRetour.Render();
