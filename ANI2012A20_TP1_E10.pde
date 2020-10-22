@@ -14,8 +14,8 @@ Sprite bat;
 Sprite pumpkin;
 Sprite candy;
 
-int coordX_perso=0;
-int coordY_perso=0;
+int coordX_perso = 0;
+int coordY_perso = 0;
 
 
 Parallax fond2, fond3, fond4, fond5, fond6, fond7, fond8, fond9, fond10, fond11;
@@ -35,10 +35,12 @@ void setup() {
   sin.play(205, 0.2);
 
   s = new Sound(this);
-  s.volume(v);
+  s.volume(0);
 
-  coordX_perso= width/8;
-  coordY_perso= height/8;
+  coordX_perso = 0;
+  coordY_perso = 128;
+  println(coordX_perso);
+  println(coordY_perso);
 
   ghost = new Personnage(coordX_perso, coordY_perso);
 

@@ -23,7 +23,7 @@ class Personnage {
   void Update () {
     shape.Update();
     if (enSaut == true) {
-      coordY_perso += 10;
+      coordY_perso += 8;
       if (coordY_perso == floor)
         enSaut = false;
     }
@@ -43,7 +43,7 @@ class Personnage {
         coordX_perso += - 1;
       break;
     case RIGHT :
-      if ((coordX_perso + shape.spriteWidth) * shape.sizeFactor < width)
+      if ((coordX_perso + shape.spriteWidth) * shape.sizeFactor < width/2)
         coordX_perso += 1;
       break;
     case UP :
