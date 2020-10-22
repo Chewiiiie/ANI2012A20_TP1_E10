@@ -1,7 +1,6 @@
 class Bouton {
 
   static final int RECTANGLE = 1;
-  static final int CERCLE = 2;
   static final int FLECHE = 3;
 
   private int coordX, coordY;
@@ -37,9 +36,6 @@ class Bouton {
     if (shape == RECTANGLE)
       rect(coordX, coordY, wBouton, hBouton);
 
-    if (shape == CERCLE)
-      circle(coordX, coordY, rBouton);
-
     if (shape == FLECHE) {
       square(coordX, coordY, rBouton);
       fill(0);
@@ -74,11 +70,17 @@ class Bouton {
 
   void Size(int r) {
     rBouton = r;
+    wBouton = r;
+    hBouton = r;
   }
 
   boolean CheckIn() {
-    if (mouseX > coordX && mouseX < coordX + wBouton && mouseY > coordY && mouseY < coordY + hBouton)
-      return true;
+    switch(shape) {
+    case FLECHE :
+    case RECTANGLE : 
+      if (mouseX > coordX && mouseX < coordX + wBouton && mouseY > coordY && mouseY < coordY + hBouton)
+        return true;
+    }
 
     return false;
   }

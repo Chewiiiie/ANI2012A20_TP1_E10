@@ -4,7 +4,9 @@ class Menu {
   Bouton bouton3;
 
 
+
   Menu() {
+
     //Bouton pour lancer le jeu
     bouton1 = new Bouton ("Jeu", Bouton.RECTANGLE);
     bouton1.Position(250, 300);
@@ -15,7 +17,7 @@ class Menu {
     bouton2.Size(400, 100);
 
     //Bouton "Son"
-    bouton3 = new Bouton ("", Bouton.CERCLE);
+    bouton3 = new Bouton ("", Bouton.RECTANGLE);
     bouton3.Position(845, 25);
     bouton3.Size(30);
   }
@@ -35,5 +37,9 @@ class Menu {
       return COMMANDES;
 
     return MENU;
+  }
+
+  boolean CheckButSound() {
+    return bouton3.CheckIn ();
   }
 }

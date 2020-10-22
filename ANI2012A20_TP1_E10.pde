@@ -1,3 +1,7 @@
+import processing.sound.*;
+Sound s;
+float v = 0.5f;
+
 static final int MENU = 0;
 static final int JEU = 1;
 static final int COMMANDES = 2;
@@ -24,6 +28,14 @@ void setup() {
 
   main = new Menu();
   boutonRetour = new Bouton("", Bouton.FLECHE);
+
+  SinOsc sin = new SinOsc(this);
+  sin.play(200, 0.2);
+  sin = new SinOsc(this);
+  sin.play(205, 0.2);
+
+  s = new Sound(this);
+  s.volume(v);
 
   coordX_perso= width/8;
   coordY_perso= height/8;
@@ -126,6 +138,10 @@ void keyPressed() {
 void mousePressed() {
   if (mouseButton == LEFT && ecran == MENU) { 
     ecran = main.ButtonPress();
+    if (main.CheckButSound () == true) {
+      v = v == 0.5f ? 0.0f : 0.5f ;
+      s.volume(v);
+    }
   }
 
   if (mouseButton == LEFT && ecran == COMMANDES) { 
