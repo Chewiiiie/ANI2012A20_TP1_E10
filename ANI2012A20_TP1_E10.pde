@@ -10,9 +10,10 @@ Menu main;
 Bouton boutonRetour;
 
 Personnage ghost;
-Sprite bat;
-Sprite pumpkin;
-Sprite candy;
+Bat b1;
+Pumpkin p1;
+Candy c1;
+
 
 int coordX_perso = 0;
 int coordY_perso = 0;
@@ -44,23 +45,9 @@ void setup() {
 
   ghost = new Personnage(coordX_perso, coordY_perso);
 
-  bat = new Sprite();
-  bat.SpriteSheetName ("Bat.png");
-  bat.SpriteDimension (16, 13, 4);
-  bat.SpriteOrigin (0, 0);
-  bat.SpriteNumber (4, 1);
-  bat.SpriteOffset (0, 0);
-  bat.LoadSpriteSheet();
-
-  pumpkin = new Sprite();
-  pumpkin.SpriteSheetName ("Pumpkin.png");
-  pumpkin.SpriteDimension (16, 16, 5);
-  pumpkin.SpriteOrigin (0, 0);
-  pumpkin.SpriteNumber (4, 1);
-  pumpkin.SpriteOffset (0, 0);
-  pumpkin.LoadSpriteSheet();
-
-  candy = new Sprite();
+  b1 = new Bat();
+  p1 = new Pumpkin();
+  c1 = new Candy();
 
   fond1 = loadImage("Fond1.png");
   fond2 = new Parallax("Fond2.png", 1, height);
@@ -84,9 +71,9 @@ void draw() {
   else if (ecran == JEU) {
     if (frameCount>10) {
       ghost.Update();
-      bat.Update();
-      pumpkin.Update();
-      //candy.Update();
+      b1.Update();
+      p1.Update();
+      c1.Update();
 
       frameCount=0;
     }
@@ -115,9 +102,9 @@ void draw() {
     fond11.Render();
 
     ghost.Render();
-    bat.Render((width/4) - 10 , coordY_perso - 20);
-    pumpkin.Render((width/5) - 10, coordY_perso - 25);
-    //candy.Render((width/2) - 10, coordY_perso + 145);
+    b1.Render();
+    p1.Render();
+    c1.Render();
   } else if (ecran == COMMANDES) {
     background (0);
     boutonRetour.Render();

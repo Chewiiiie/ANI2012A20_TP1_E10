@@ -1,11 +1,11 @@
-class Candy extends Collectible {
+class Bat extends Monstre {
 
-  Candy() {
-    super((width/2), 128+145, 10);
-    shape.SpriteSheetName ("Candy.png");
-    shape.SpriteDimension (20, 20, 2);
+  Bat() {
+    super((width/4), 128 - 20, 10);
+    shape.SpriteSheetName ("Bat.png");
+    shape.SpriteDimension (16, 13, 4);
     shape.SpriteOrigin (0, 0);
-    shape.SpriteNumber (1, 1);
+    shape.SpriteNumber (4, 1);
     shape.SpriteOffset (0, 0);
     shape.LoadSpriteSheet();
   }
