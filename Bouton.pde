@@ -1,5 +1,7 @@
 class Bouton {
 
+  PImage img;
+
   static final int RECTANGLE = 1;
   static final int FLECHE = 3;
 
@@ -24,6 +26,8 @@ class Bouton {
     sizeTxt = 32;
 
     shape = s;
+
+    img = new PImage();
   }
 
   void Update() {
@@ -31,6 +35,7 @@ class Bouton {
 
   void Render() {
     pushMatrix();
+    pushStyle();
     fill(255); 
 
     if (shape == RECTANGLE)
@@ -55,6 +60,10 @@ class Bouton {
     textSize(sizeTxt);
     text(txt, coordX + (wBouton/2), coordY + (hBouton/2));
     noFill();
+    
+    imageMode(CENTER);
+    image(img, coordX + (wBouton/2), coordY + (hBouton/2));
+    popStyle();
     popMatrix();
   }
 
