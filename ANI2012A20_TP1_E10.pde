@@ -73,9 +73,12 @@ void draw() {
   else if (ecran == JEU) {
     if (frameCount>10) {
       ghost.Update();
-      b1.Update();
+      //b1.Update();
       p1.Update();
-      c1.Update();
+     // c1.Update();
+      //b1.Collision(ghost);
+      p1.Collision(ghost);
+      //c1.Collision(ghost);
 
       frameCount=0;
     }
@@ -104,9 +107,9 @@ void draw() {
     fond11.Render();
 
     ghost.Render();
-    b1.Render();
+    //b1.Render();
     p1.Render();
-    c1.Render();
+   // c1.Render();
   } else if (ecran == COMMANDES) {
     background (0);
     boutonRetour.Render();

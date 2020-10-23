@@ -9,7 +9,7 @@ class Menu {
   Menu() {
 
     //Bouton pour lancer le jeu
-    bouton1 = new Bouton ("Jeu", Bouton.RECTANGLE);
+    bouton1 = new Bouton ("Play", Bouton.RECTANGLE);
     bouton1.Position(250, 300);
     bouton1.Size(400, 100);
 

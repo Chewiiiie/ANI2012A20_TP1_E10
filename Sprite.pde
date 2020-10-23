@@ -7,7 +7,7 @@ class Sprite {
   int spriteWidth, spriteHeight;
   private int xOrigin, yOrigin;
   private int nWidth, nHeight;
-   int xOffset, yOffset;
+  int xOffset, yOffset;
   private int sizeFactor;
   //Element logique
   private int index;
@@ -57,8 +57,8 @@ class Sprite {
     spriteWidth = w;
     spriteHeight = h;
   }
-  
-    //w et h n'a de valeur qu'entre les accolades
+
+  //w et h n'a de valeur qu'entre les accolades
   void SpriteDimension(int w, int h, int s) {
     spriteWidth = w;
     spriteHeight = h;
@@ -89,5 +89,9 @@ class Sprite {
     scale (sizeFactor);
     image (spriteGrid[index], x, y);
     popMatrix();
+  }
+
+  int GetSizeFactor() {
+    return sizeFactor;
   }
 }

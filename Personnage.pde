@@ -5,6 +5,7 @@ class Personnage {
   private int coordY_perso;
   private boolean enSaut = false;
   private int floor;
+  private int nbrBonbon;
 
 
   Personnage (int originX, int originY) {
@@ -18,6 +19,8 @@ class Personnage {
     coordX_perso = originX;
     coordY_perso = originY;
     floor = originY;
+
+    nbrBonbon = 0;
   }
 
   void Update () {
@@ -37,6 +40,7 @@ class Personnage {
 
   void Movement () {
 
+
     switch (keyCode) {
     case LEFT : 
       if (coordX_perso > 0)
@@ -53,5 +57,17 @@ class Personnage {
       }
       break;
     }
+  }
+
+  int GetCoordX() {
+    return coordX_perso;
+  }
+
+  int GetCoordY() {
+    return coordY_perso;
+  }
+
+  Sprite GetShape() {
+    return shape;
   }
 }
