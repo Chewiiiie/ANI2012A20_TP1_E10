@@ -25,6 +25,8 @@ PImage fond1;
 
 void setup() {
   size(900, 650);
+  surface.setTitle("A Little Halloween Adventure");
+  surface.setResizable(false);
   frameRate(25);
 
   main = new Menu();
@@ -103,8 +105,8 @@ void draw() {
 
     ghost.Render();
     b1.Render();
-    //p1.Render();
-    //c1.Render();
+    p1.Render();
+    c1.Render();
   } else if (ecran == COMMANDES) {
     background (0);
     boutonRetour.Render();

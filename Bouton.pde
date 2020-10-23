@@ -23,7 +23,7 @@ class Bouton {
     cBouton = color(0);
 
     txt = txtStr;
-    sizeTxt = 32;
+    sizeTxt = 60;
 
     shape = s;
 
@@ -54,11 +54,10 @@ class Bouton {
       strokeWeight(1);
     }
 
-
     fill(cBouton);
     textAlign(CENTER, CENTER);
     textSize(sizeTxt);
-    text(txt, coordX + (wBouton/2), coordY + (hBouton/2));
+    text(txt, coordX + (wBouton/2), coordY + (hBouton/4));
     noFill();
     
     imageMode(CENTER);
