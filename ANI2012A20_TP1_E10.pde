@@ -27,7 +27,7 @@ void setup() {
   size(900, 650);
   surface.setTitle("A Little Halloween Adventure");
   surface.setResizable(false);
-  frameRate(25);
+  frameRate(30);
 
   main = new Menu();
   boutonRetour = new Bouton("", Bouton.FLECHE);
@@ -42,8 +42,6 @@ void setup() {
 
   coordX_perso = 0;
   coordY_perso = 128;
-  println(coordX_perso);
-  println(coordY_perso);
 
   ghost = new Personnage(coordX_perso, coordY_perso);
 
@@ -66,23 +64,12 @@ void setup() {
 
 
 void draw() {
-
+  background(255);
   if (ecran == MENU)
     main.Render();
 
   else if (ecran == JEU) {
-    if (frameCount>10) {
-      ghost.Update();
-      //b1.Update();
-      p1.Update();
-     // c1.Update();
-      //b1.Collision(ghost);
-      p1.Collision(ghost);
-      //c1.Collision(ghost);
-
-      frameCount=0;
-    }
-
+    // Paralax Background
     fond2.Update();
     fond3.Update();
     fond4.Update();
@@ -106,10 +93,33 @@ void draw() {
     fond10.Render();
     fond11.Render();
 
+    // Player + Monsters + Candy
+    // Mise à jour de la section de la sprite sheet à afficher
+    if (frameCount == 10) {
+      ghost.Update();
+      // b1.Update();
+      p1.Update();
+      // c1.Update();
+      frameCount=0;
+    }
+
+    // Déplacements
+    ghost.Displacement();
+    b1.Displacement();
+    p1.Displacement();
+    c1.Displacement();
+
+    // Vérification des collisions
+    b1.Collision(ghost);
+    p1.Collision(ghost);
+    c1.Collision(ghost);
+
+    // Affichage
     ghost.Render();
-    //b1.Render();
+    b1.Render();
     p1.Render();
-   // c1.Render();
+    c1.Render();
+    
   } else if (ecran == COMMANDES) {
     background (0);
     boutonRetour.Render();

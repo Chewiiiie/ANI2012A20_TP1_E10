@@ -4,6 +4,10 @@ class Collectible extends LeftRunner {
     super(x, y, s);
   }
 
+  void Displacement() {
+    super.Displacement();
+  }
+  
   void Update() {
     super.Update();
   }

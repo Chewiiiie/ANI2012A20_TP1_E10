@@ -8,6 +8,10 @@ class Monstre extends LeftRunner {
     super(x, y, s, mY);
   }
 
+  void Displacement() {
+    super.Displacement();
+  }
+
   void Update() {
     super.Update();
   }
