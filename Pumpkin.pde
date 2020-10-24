@@ -21,4 +21,9 @@ class Pumpkin extends Monstre {
   void Render() {
     super.Render();
   }
+
+  void Touched () {
+    if (enCollision == true)
+      ecran = GAMEOVER;
+  }
 }

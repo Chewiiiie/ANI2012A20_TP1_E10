@@ -7,6 +7,7 @@ static final int JEU = 1;
 static final int COMMANDES = 2;
 static final int INTRO = 3;
 static final int VICTOIRE = 4;
+static final int GAMEOVER = 5;
 int ecran = MENU;
 Menu main;
 Bouton boutonRetour;
@@ -71,6 +72,8 @@ void draw() {
     main.Render();
   else if (ecran == VICTOIRE)
     DrawVictoire();
+  else if (ecran == GAMEOVER)
+    DrawGameOver();
 
   else if (ecran == INTRO) {
     DrawIntro();
@@ -119,7 +122,9 @@ void draw() {
     b1.Collision(ghost);
     p1.Collision(ghost);
     c1.Collision(ghost);
+
     c1.Collected(ghost);
+    p1.Touched();
 
     // Affichage
     b1.Render();
@@ -141,10 +146,9 @@ void draw() {
 }
 
 void keyPressed() {
-
   if (ecran == JEU && key == CODED) 
     ghost.Movement();
-  else if (ecran == INTRO) {
+  else if (ecran == INTRO || ecran == GAMEOVER) {
     if (key == 32)
       ecran = JEU;
   }

@@ -109,7 +109,6 @@ class Personnage {
 
   boolean Victoire() {
     if (nbrBonbon == 5) {
-      //coordX_perso = 105;
       saveFrame("victory.png");
       imgVictory = loadImage("victory.png");
 
