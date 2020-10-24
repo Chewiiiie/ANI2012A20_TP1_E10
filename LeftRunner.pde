@@ -1,11 +1,11 @@
 class LeftRunner {
   protected Sprite shape;
-  protected int coordX, coordY;
+  protected float coordX, coordY;
   private int originX, originY, maxY;
-  private int speed;
+  private float speed;
   boolean enCollision;
 
-  LeftRunner(int x, int y, int s) {
+  LeftRunner(int x, int y, float s) {
     coordX = originX = x; 
     coordY = originY = maxY = y;
     speed = s;
@@ -14,7 +14,7 @@ class LeftRunner {
   }
 
 
-  LeftRunner(int x, int y, int s, int mY) {
+  LeftRunner(int x, int y, float s, int mY) {
     coordX = originX = x; 
     coordY = originY = y;
     maxY = mY;
@@ -28,7 +28,7 @@ class LeftRunner {
     coordX -= speed;
     if (coordX <= 0 || coordX >= originX) {
       coordX = originX;
-      coordY = (int) random((float) maxY, (float)originY);
+      coordY = random((float) maxY, (float)originY);
     }
   }
 
@@ -48,26 +48,26 @@ class LeftRunner {
       return;
 
     // Récupération du facteur d'agrandissement
-    int pSF = p.GetShape().GetSizeFactor();    // Personnage
-    int lrSF = shape.GetSizeFactor();          // Monstre actuel
+    float pSF = p.GetShape().GetSizeFactor();    // Personnage
+    float lrSF = shape.GetSizeFactor();          // Monstre actuel
 
     // Récupération coordonnées
-    int pX = (int)p.GetCoordX();  // Personnage
-    int pY = (int)p.GetCoordY();  // Personnage
-    int lrX = coordX;             // Monstre actuel
-    int lrY = coordY;             // Monstre actuel
+    float pX = p.GetCoordX();  // Personnage
+    float pY = p.GetCoordY();  // Personnage
+    float lrX = coordX;             // Monstre actuel
+    float lrY = coordY;             // Monstre actuel
 
     // Récupération taille avatar
-    int pW = p.GetShape().spriteWidth;    // Personnage
-    int pH = p.GetShape().spriteHeight;   // Personnage
-    int lrW = shape.spriteWidth;          // Monstre actuel
-    int lrH = shape.spriteHeight;         // Monstre actuel
+    float pW = p.GetShape().spriteWidth;    // Personnage
+    float pH = p.GetShape().spriteHeight;   // Personnage
+    float lrW = shape.spriteWidth;          // Monstre actuel
+    float lrH = shape.spriteHeight;         // Monstre actuel
 
     // Calcul des points...
-    int pLarg = (pX + pW) * pSF;          // ...En haut à droite du personnage
-    int pHaut = (pY + pH) * pSF;          // ...En bas à gauche du personnage
-    int lrLarg = (lrX + lrW) * lrSF;      // ...En haut à droite du monstre actuel
-    int lrHaut = (lrY + lrH) * lrSF;      // ...En bas à gauche du monstre actuel
+    float pLarg = (pX + pW) * pSF;          // ...En haut à droite du personnage
+    float pHaut = (pY + pH) * pSF;          // ...En bas à gauche du personnage
+    float lrLarg = (lrX + lrW) * lrSF;      // ...En haut à droite du monstre actuel
+    float lrHaut = (lrY + lrH) * lrSF;      // ...En bas à gauche du monstre actuel
 
     // Un des points du monstre est-il dans le personnage ?
     boolean a = (pX * pSF <= lrX * lrSF && pLarg >= lrX * lrSF);

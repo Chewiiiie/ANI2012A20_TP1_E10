@@ -11,7 +11,7 @@ class Personnage {
   private boolean enMonte = false;
   private int floor;
   private int ceil;
-  final private float jumpSpeed = 1.5f;
+  final private float jumpSpeed = 2.0f;
 
   // Vitesse déplacement horizontal
   final private float hSpeed = 1.5f;
@@ -108,9 +108,12 @@ class Personnage {
   }
 
   boolean Victoire() {
-    if (nbrBonbon == 5)
+    if (nbrBonbon == 5){
+      coordX_perso = 105;
       return true;
-
+      
+    
+    }
     return false;
   }
 }

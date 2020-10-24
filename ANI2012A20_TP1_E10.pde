@@ -6,6 +6,7 @@ static final int MENU = 0;
 static final int JEU = 1;
 static final int COMMANDES = 2;
 static final int INTRO = 3;
+static final int VICTOIRE = 4;
 int ecran = MENU;
 Menu main;
 Bouton boutonRetour;
@@ -68,6 +69,8 @@ void draw() {
   background(255);
   if (ecran == MENU)
     main.Render();
+  else if (ecran == VICTOIRE)
+    DrawVictoire();
 
   else if (ecran == INTRO) {
     DrawIntro();
@@ -119,15 +122,13 @@ void draw() {
     c1.Collected(ghost);
 
     // Affichage
-
     b1.Render();
     c1.Render();
     p1.Render();
-
     ghost.Render();
+
     if (ghost.Victoire()) {
-      println ("Victory");
-      ecran = MENU;
+      ecran = VICTOIRE;
     }
   } else if (ecran == COMMANDES) {
     background (0);

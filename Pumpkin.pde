@@ -1,7 +1,7 @@
 class Pumpkin extends Monstre {
 
   Pumpkin() {
-    super((width/5), 128 - 25, 1);
+    super((width/5), 128 - 25, 1.8f);
     shape.SpriteSheetName ("Pumpkin.png");
     shape.SpriteDimension (16, 16, 5);
     shape.SpriteOrigin (0, 0);

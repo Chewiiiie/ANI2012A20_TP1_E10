@@ -1,6 +1,6 @@
 class Collectible extends LeftRunner {
 
-  Collectible(int x, int y, int s) {
+  Collectible(int x, int y, float s) {
     super(x, y, s);
   }
 
