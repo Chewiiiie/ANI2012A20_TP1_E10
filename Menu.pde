@@ -42,7 +42,7 @@ class Menu {
 
   int ButtonPress() {
     if (bouton1.CheckIn () == true)
-      return JEU;
+      return INTRO;
 
     if (bouton2.CheckIn () == true)
       return COMMANDES;

@@ -5,6 +5,7 @@ float v = 0.5f;
 static final int MENU = 0;
 static final int JEU = 1;
 static final int COMMANDES = 2;
+static final int INTRO = 3;
 int ecran = MENU;
 Menu main;
 Bouton boutonRetour;
@@ -68,7 +69,9 @@ void draw() {
   if (ecran == MENU)
     main.Render();
 
-  else if (ecran == JEU) {
+  else if (ecran == INTRO) {
+    DrawIntro();
+  } else if (ecran == JEU) {
     // Paralax Background
     fond2.Update();
     fond3.Update();
@@ -119,7 +122,6 @@ void draw() {
     b1.Render();
     p1.Render();
     c1.Render();
-    
   } else if (ecran == COMMANDES) {
     background (0);
     boutonRetour.Render();
@@ -127,8 +129,12 @@ void draw() {
 }
 
 void keyPressed() {
-  if (key == CODED) {
+
+  if (ecran == JEU && key == CODED) 
     ghost.Movement();
+  else if (ecran == INTRO) {
+    if (key == 32)
+      ecran = JEU;
   }
 }
 

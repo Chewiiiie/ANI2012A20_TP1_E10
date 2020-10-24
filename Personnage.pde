@@ -79,7 +79,7 @@ class Personnage {
     case UP :
       if (coordY_perso > 0 && enSaut == false)
         enSaut = enMonte = true;
-      break;
+      break; 
     }
   }
 
