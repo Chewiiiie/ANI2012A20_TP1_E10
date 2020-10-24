@@ -76,7 +76,10 @@ class LeftRunner {
     boolean d = (pY * pSF <= lrHaut && pHaut >= lrHaut);
 
     // Si oui, déplace le monstre au départ
-    if ((a && b) || (c && b) || (c && d) || (a && d))
+    if ((a && b) || (c && b) || (c && d) || (a && d)) {
       coordX = originX + 10;
+      enCollision = true;
+    }
+    else enCollision = false;
   }
 }

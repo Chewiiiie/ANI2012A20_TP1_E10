@@ -63,6 +63,14 @@ class Personnage {
 
   void Render () {
     shape.Render(coordX_perso, coordY_perso);
+
+
+    textSize(32);
+    fill(0);
+    textFont(lora);
+    textAlign(LEFT, TOP);
+    String msg = "BONBON " + nbrBonbon;
+    text(msg, 0, 0);
   }
 
 
@@ -79,7 +87,7 @@ class Personnage {
     case UP :
       if (coordY_perso > 0 && enSaut == false)
         enSaut = enMonte = true;
-      break; 
+      break;
     }
   }
 
@@ -93,5 +101,16 @@ class Personnage {
 
   Sprite GetShape() {
     return shape;
+  }
+
+  void AddBonbon() {
+    nbrBonbon += 1;
+  }
+
+  boolean Victoire() {
+    if (nbrBonbon == 5)
+      return true;
+
+    return false;
   }
 }

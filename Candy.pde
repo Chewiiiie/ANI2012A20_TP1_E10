@@ -21,4 +21,9 @@ class Candy extends Collectible {
   void Render() {
     super.Render();
   }
+
+  void Collected(Personnage ghost) {
+    if (enCollision == true)
+      ghost.AddBonbon();
+  }
 }

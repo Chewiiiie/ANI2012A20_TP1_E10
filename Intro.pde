@@ -1,4 +1,4 @@
-PFont police;
+PFont lora, hallo;
 
 int savedTime = millis();
 int interval = 2000;
@@ -7,8 +7,8 @@ void DrawIntro () {
 
   background (0);
 
-  police = createFont("Lora-VariableFont_wght.ttf", 22);
-  textFont(police);
+  lora = createFont("Lora-VariableFont_wght.ttf", 22);
+  textFont(lora);
   textAlign(CENTER, CENTER);
   fill(255);
   text("Ghost doit se rendre a une fête d'Halloween chez son amie Witchie la petite sorcière.", 450, 150);
@@ -19,8 +19,8 @@ void DrawIntro () {
   text( "Attention a ne pas entrer en collision avec ces monstres !", 450, 400);
 
 
-  police = createFont("HalloWitchZ.ttf", 50);
-  textFont(police);
+  hallo = createFont("HalloWitchZ.ttf", 50);
+  textFont(hallo);
   int elapsed = millis() - savedTime;
   if ( elapsed < 500 ) {
     fill(0);

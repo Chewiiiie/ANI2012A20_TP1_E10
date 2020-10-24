@@ -98,11 +98,11 @@ void draw() {
 
     // Player + Monsters + Candy
     // Mise à jour de la section de la sprite sheet à afficher
-    if (frameCount == 10) {
+    if (frameCount > 10) {
       ghost.Update();
-      // b1.Update();
+      b1.Update();
       p1.Update();
-      // c1.Update();
+      c1.Update();
       frameCount=0;
     }
 
@@ -116,12 +116,19 @@ void draw() {
     b1.Collision(ghost);
     p1.Collision(ghost);
     c1.Collision(ghost);
+    c1.Collected(ghost);
 
     // Affichage
-    ghost.Render();
+
     b1.Render();
-    p1.Render();
     c1.Render();
+    p1.Render();
+
+    ghost.Render();
+    if (ghost.Victoire()) {
+      println ("Victory");
+      ecran = MENU;
+    }
   } else if (ecran == COMMANDES) {
     background (0);
     boutonRetour.Render();
