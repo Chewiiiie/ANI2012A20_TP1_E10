@@ -1,8 +1,10 @@
-
+PImage imgVictory;
 
 void DrawVictoire () {
 
-  background (0);
+ // background (0);
+
+  
 
   textSize(70);
   textFont(hallo);

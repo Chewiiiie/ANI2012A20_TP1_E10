@@ -66,7 +66,7 @@ void setup() {
 
 
 void draw() {
-  background(255);
+
   if (ecran == MENU)
     main.Render();
   else if (ecran == VICTOIRE)
@@ -129,6 +129,10 @@ void draw() {
 
     if (ghost.Victoire()) {
       ecran = VICTOIRE;
+      tint(0, 0, 0, 50);
+      filter(BLUR, 6);
+      image(imgVictory, 0, 0);
+      noTint();
     }
   } else if (ecran == COMMANDES) {
     background (0);
