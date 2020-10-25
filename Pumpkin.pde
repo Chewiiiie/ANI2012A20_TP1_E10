@@ -1,3 +1,5 @@
+Pumpkin p1;
+
 class Pumpkin extends Monstre {
 
   Pumpkin() {

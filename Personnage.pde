@@ -1,3 +1,19 @@
+Personnage ghost;
+
+int coordX_perso = 0;
+int coordY_perso = 128;
+
+void CheckVictory() {
+  if (ghost.Victoire()) {
+    ecran = VICTOIRE;
+    tint(0, 0, 0, 50);
+    filter(BLUR, 6);
+    image(imgVictory, 0, 0);
+    noTint();
+  }
+}
+
+
 class Personnage {
   // Avatar
   private Sprite shape;
@@ -107,11 +123,11 @@ class Personnage {
   }
 
   boolean Victoire() {
-    if (nbrBonbon == 1) {
+    if (nbrBonbon == 5) {
       saveFrame("victory.png");
       imgVictory = loadImage("victory.png");
       jingleWin.play();
-      
+
       return true;
     }
     return false;

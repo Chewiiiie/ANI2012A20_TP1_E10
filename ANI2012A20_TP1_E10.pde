@@ -1,39 +1,5 @@
-import processing.sound.*;
-Sound s;
-float v = 0f;
-
-SoundFile loophorror;
-SoundFile disappear;
-SoundFile jingleWin;
-SoundFile pickup;
-
-static final int MENU = 0;
-static final int JEU = 1;
-static final int COMMANDES = 2;
-static final int INTRO = 3;
-static final int VICTOIRE = 4;
-static final int GAMEOVER = 5;
-int ecran = MENU;
-Menu main;
-Bouton boutonRetour;
-
-Personnage ghost;
-Bat b1;
-Pumpkin p1;
-Candy c1;
-
-
-int coordX_perso = 0;
-int coordY_perso = 0;
-
-
-Parallax fond2, fond3, fond4, fond5, fond6, fond7, fond8, fond9, fond10, fond11;
-PImage fond1;
-
-PFont lora, hallo;
-
-PImage fondCommandes;
-
+//ANI2012A20_TP1_E10 - Travail Pratique 1
+//Solène CHEVOLEAU - "A Little Halloween Adventure"
 
 void setup() {
   size(900, 650);
@@ -41,135 +7,37 @@ void setup() {
   surface.setResizable(false);
   frameRate(30);
 
-  lora = createFont("Lora-VariableFont_wght.ttf", 50);
-  hallo = createFont("HalloWitchZ.ttf", 50);
-
-  main = new Menu();
-  boutonRetour = new Bouton("", Bouton.FLECHE);
-
-  fondCommandes = loadImage("Commandes.png");
-
+  InitOutils();
+  InitSon();
+  InitBackground();
+  InitEcranCommandes();
+  InitMainMenu();
+  InitAgents();
   InitParticles();
-
-  loophorror = new SoundFile(this, "loophorror.mp3");
-  disappear = new SoundFile(this, "disappear.aiff");
-  jingleWin = new SoundFile(this, "jingle-win.wav");
-  pickup = new SoundFile(this, "pickup.wav");
-  
-  loophorror.loop();
-  s = new Sound(this);
-  s.volume(0);
-
-  coordX_perso = 0;
-  coordY_perso = 128;
-
-  ghost = new Personnage(coordX_perso, coordY_perso);
-
-  b1 = new Bat();
-  p1 = new Pumpkin();
-  c1 = new Candy();
-
-  fond1 = loadImage("Fond1.png");
-  fond2 = new Parallax("Fond2.png", 1, height);
-  fond3 = new Parallax("Fond3.png", 2, height);
-  fond4 = new Parallax("Fond4Lights.png", 3, height);
-  fond5 = new Parallax("Fond5.png", 4, height);
-  fond6 = new Parallax("Fond6.png", 5, height);
-  fond7 = new Parallax("Fond7Lights.png", 6, height);
-  fond8 = new Parallax("Fond8.png", 7, height);
-  fond9 = new Parallax("Fond9.png", 8, height);
-  fond10 = new Parallax("Fond10.png", 9, height);
-  fond11 = new Parallax("Fond11.png", 10, height);
 }
 
 
 void draw() {
 
-  if (ecran == MENU)
+  switch (ecran) {
+  case MENU : 
     main.Render();
-  else if (ecran == VICTOIRE)
+    break;
+  case VICTOIRE : 
     DrawVictoire();
-  else if (ecran == GAMEOVER)
+    break;
+  case GAMEOVER : 
     DrawGameOver();
-
-  else if (ecran == INTRO) {
+    break;
+  case INTRO : 
     DrawIntro();
-  } else if (ecran == JEU) {
-    // Paralax Background
-    fond2.Update();
-    fond3.Update();
-    fond4.Update();
-    fond5.Update();
-    fond6.Update();
-    fond7.Update();
-    fond8.Update();
-    fond9.Update();
-    fond10.Update();
-    fond11.Update();
-
-    image (fond1, 0, 0);
-    fond2.Render();
-    fond3.Render();
-    fond4.Render();
-    fond5.Render();
-    fond6.Render();
-    fond7.Render();
-    fond8.Render();
-    fond9.Render();
-    fond10.Render();
-    fond11.Render();
-
-    // Player + Monsters + Candy
-    // Mise à jour de la section de la sprite sheet à afficher
-    if (frameCount > 10) {
-      ghost.Update();
-      b1.Update();
-      p1.Update();
-      c1.Update();
-      frameCount=0;
-    }
-
-    // Déplacements
-    ghost.Displacement();
-    b1.Displacement();
-    p1.Displacement();
-    c1.Displacement();
-
-    // Vérification des collisions
-    b1.Collision(ghost);
-    p1.Collision(ghost);
-    c1.Collision(ghost);
-
-    c1.Collected(ghost);
-    p1.Touched();
-
-    // Affichage
-    b1.Render();
-    c1.Render();
-    p1.Render();
-    ghost.Render();
-
-    if (ghost.Victoire()) {
-      ecran = VICTOIRE;
-      tint(0, 0, 0, 50);
-      filter(BLUR, 6);
-      image(imgVictory, 0, 0);
-      noTint();
-    }
-  } else if (ecran == COMMANDES) {
-    image(fondCommandes, 0, 0);
-    textFont(hallo);
-    textSize(80);
-    textAlign(CENTER, CENTER);
-    fill(255, 127, 0);
-    text("Commandes", width/2, 70);
-
-    textFont(lora);
-    textAlign(CENTER, CENTER);
-    textSize(22);
-    fill(255, 127, 0);
-    text("OBJECTIF : Attraper 5 bonbons pour obtenir la victoire en évitant les citrouilles.", 450, 450);
-    boutonRetour.Render();
+    break;
+  case COMMANDES :
+    DrawEcranCommandes();
+    break;
+  case JEU :
+    GameLoop();
+    break;
   }
 }
 
@@ -177,21 +45,19 @@ void keyPressed() {
   if (ecran == JEU && key == CODED) 
     ghost.Movement();
   else if (ecran == INTRO || ecran == GAMEOVER) {
-    if (key == 32)
+    if (key == ' ')
       ecran = JEU;
   }
 }
 
 void mousePressed() {
-  if (mouseButton == LEFT && ecran == MENU) { 
+  if (ecran == MENU && mouseButton == LEFT ) { 
     ecran = main.ButtonPress();
     if (main.CheckButSound () == true) {
       v = v == 1f ? 0.0f : 1f ;
       s.volume(v);
     }
-  }
-
-  if (mouseButton == LEFT && ecran == COMMANDES) { 
+  } else if (ecran == COMMANDES && mouseButton == LEFT) { 
     if (boutonRetour.CheckIn () == true)
       ecran = MENU;
   }

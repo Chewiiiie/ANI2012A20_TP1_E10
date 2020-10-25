@@ -1,10 +1,13 @@
+Menu main;
+
+void InitMainMenu() {
+  main = new Menu();
+}
+
 class Menu {
   Bouton bouton1;
   Bouton bouton2;
   Bouton bouton3;
-  PFont font;
-
-
 
   Menu() {
 
@@ -23,20 +26,18 @@ class Menu {
     bouton3.Size(30);
     bouton3.img = loadImage("SoundNote.png");
     bouton3.SetSoundControl(true);
-
-    
-    font = createFont("HalloWitchZ.ttf", 100);
   }
 
   void Render() {
     pushStyle();
     background(0);
+    textFont(hallo);
     bouton1.Render();
     bouton2.Render();
     bouton3.Render();
-    textFont(font);
     textAlign(CENTER, CENTER);
     fill(223, 109, 20);
+    textSize(100);
     text("A Little Halloween Adventure", 450, 150);
     popStyle();
   }

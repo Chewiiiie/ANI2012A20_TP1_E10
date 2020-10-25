@@ -1,3 +1,5 @@
+Bat b1;
+
 class Bat extends Monstre {
 
   Bat() {

@@ -1,3 +1,5 @@
+Candy c1;
+
 class Candy extends Collectible {
 
   Candy() {
