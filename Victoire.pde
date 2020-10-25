@@ -12,11 +12,4 @@ void DrawVictoire () {
   textSize(30);
   text("Merci d'avoir aidé Ghost à retrouver les bonbons !", width/2, 300);
   text("Joyeux Halloween !", width/2, 350);
-
-  if (frameCount > 10) {
-    ghost.Update();
-    frameCount=0;
-  }
-
-  ghost.Render();
 }

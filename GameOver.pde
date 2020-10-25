@@ -1,12 +1,13 @@
 void DrawGameOver () {
 
-  background (0);
+  fade (15);
+  ps1.update();
 
   textFont(hallo);
-  textSize(150);
+  textSize(130);
   textAlign(CENTER, CENTER);
   fill(255, 127, 0);
-  text("GAME OVER", width/2, 200);
+  text("GAME OVER", width/2, 100);
 
   textFont(lora);
   textSize(60);

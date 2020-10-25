@@ -34,6 +34,8 @@ void setup() {
 
   main = new Menu();
   boutonRetour = new Bouton("", Bouton.FLECHE);
+  
+  InitParticles();
 
   SinOsc sin = new SinOsc(this);
   sin.play(200, 0.2);
