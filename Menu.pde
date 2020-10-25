@@ -22,6 +22,7 @@ class Menu {
     bouton3.Position(845, 25);
     bouton3.Size(30);
     bouton3.img = loadImage("SoundNote.png");
+    bouton3.SetSoundControl(true);
 
     
     font = createFont("HalloWitchZ.ttf", 100);

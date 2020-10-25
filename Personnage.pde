@@ -64,10 +64,9 @@ class Personnage {
   void Render () {
     shape.Render(coordX_perso, coordY_perso);
 
-
-    textSize(32);
     fill(0);
     textFont(lora);
+    textSize(32);
     textAlign(LEFT, TOP);
     String msg = "BONBON " + nbrBonbon;
     text(msg, 0, 0);

@@ -1,6 +1,6 @@
 import processing.sound.*;
 Sound s;
-float v = 0.5f;
+float v = 0f;
 
 static final int MENU = 0;
 static final int JEU = 1;

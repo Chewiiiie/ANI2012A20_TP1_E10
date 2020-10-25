@@ -11,6 +11,7 @@ class Bouton {
   private color cBouton;
   private String txt;
   private int shape;
+  private boolean soundControl;
 
   Bouton (String txtStr, int s) {
     coordX = 0;
@@ -28,6 +29,8 @@ class Bouton {
     shape = s;
 
     img = new PImage();
+
+    soundControl = false;
   }
 
   void Update() {
@@ -59,9 +62,14 @@ class Bouton {
     textSize(sizeTxt);
     text(txt, coordX + (wBouton/2), coordY + (hBouton/4));
     noFill();
-    
+
     imageMode(CENTER);
     image(img, coordX + (wBouton/2), coordY + (hBouton/2));
+
+    if (v == 0 && soundControl) {
+      fill(255, 0, 0, 70);
+      rect(coordX, coordY, wBouton, hBouton);
+    }
     popStyle();
     popMatrix();
   }
@@ -91,5 +99,9 @@ class Bouton {
     }
 
     return false;
+  }
+
+  void SetSoundControl(boolean active) {
+    soundControl = active;
   }
 }
