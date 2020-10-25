@@ -1,4 +1,5 @@
-// ANI2012A20_Particles/ParticlePhysic.pde
+//ANI2012A20_TP1_E10 - Travail Pratique 1
+//Solène CHEVOLEAU - "A Little Halloween Adventure"
 // Classe de type ParticlePhysic, qui hérite de la classe Particle.
 
 class ParticlePhysic extends Particle

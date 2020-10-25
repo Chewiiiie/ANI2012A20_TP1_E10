@@ -1,5 +1,5 @@
-// ANI2012A20_Particles/Vector.pde
-// Classe de type Vector (vecteur 3D).
+//ANI2012A20_TP1_E10 - Travail Pratique 1
+//Solène CHEVOLEAU - "A Little Halloween Adventure"
 
 class Vector
 {

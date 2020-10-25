@@ -1,3 +1,6 @@
+//ANI2012A20_TP1_E10 - Travail Pratique 1
+//Solène CHEVOLEAU - "A Little Halloween Adventure"
+
 static final int MENU = 0;
 static final int JEU = 1;
 static final int COMMANDES = 2;

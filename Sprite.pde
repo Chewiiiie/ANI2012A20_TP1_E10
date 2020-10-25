@@ -1,3 +1,6 @@
+//ANI2012A20_TP1_E10 - Travail Pratique 1
+//Solène CHEVOLEAU - "A Little Halloween Adventure"
+
 class Sprite {
   //Correspond à ma Sprite Sheet
   private PImage[] spriteGrid;
