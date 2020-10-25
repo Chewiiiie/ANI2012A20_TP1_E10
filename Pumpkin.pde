@@ -23,7 +23,9 @@ class Pumpkin extends Monstre {
   }
 
   void Touched () {
-    if (enCollision == true)
+    if (enCollision == true) {
       ecran = GAMEOVER;
+      disappear.play();
+    }
   }
 }

@@ -2,6 +2,11 @@ import processing.sound.*;
 Sound s;
 float v = 0f;
 
+SoundFile loophorror;
+SoundFile disappear;
+SoundFile jingleWin;
+SoundFile pickup;
+
 static final int MENU = 0;
 static final int JEU = 1;
 static final int COMMANDES = 2;
@@ -46,11 +51,12 @@ void setup() {
 
   InitParticles();
 
-  SinOsc sin = new SinOsc(this);
-  sin.play(200, 0.2);
-  sin = new SinOsc(this);
-  sin.play(205, 0.2);
-
+  loophorror = new SoundFile(this, "loophorror.mp3");
+  disappear = new SoundFile(this, "disappear.aiff");
+  jingleWin = new SoundFile(this, "jingle-win.wav");
+  pickup = new SoundFile(this, "pickup.wav");
+  
+  loophorror.loop();
   s = new Sound(this);
   s.volume(0);
 
@@ -180,7 +186,7 @@ void mousePressed() {
   if (mouseButton == LEFT && ecran == MENU) { 
     ecran = main.ButtonPress();
     if (main.CheckButSound () == true) {
-      v = v == 0.5f ? 0.0f : 0.5f ;
+      v = v == 1f ? 0.0f : 1f ;
       s.volume(v);
     }
   }

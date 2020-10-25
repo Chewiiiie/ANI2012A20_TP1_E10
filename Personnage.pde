@@ -107,10 +107,11 @@ class Personnage {
   }
 
   boolean Victoire() {
-    if (nbrBonbon == 5) {
+    if (nbrBonbon == 1) {
       saveFrame("victory.png");
       imgVictory = loadImage("victory.png");
-
+      jingleWin.play();
+      
       return true;
     }
     return false;

@@ -23,7 +23,9 @@ class Candy extends Collectible {
   }
 
   void Collected(Personnage ghost) {
-    if (enCollision == true)
+    if (enCollision == true) {
       ghost.AddBonbon();
+      pickup.play();
+    }
   }
 }
