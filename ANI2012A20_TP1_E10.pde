@@ -25,6 +25,10 @@ int coordY_perso = 0;
 Parallax fond2, fond3, fond4, fond5, fond6, fond7, fond8, fond9, fond10, fond11;
 PImage fond1;
 
+PFont lora, hallo;
+
+PImage fondCommandes;
+
 
 void setup() {
   size(900, 650);
@@ -32,9 +36,14 @@ void setup() {
   surface.setResizable(false);
   frameRate(30);
 
+  lora = createFont("Lora-VariableFont_wght.ttf", 50);
+  hallo = createFont("HalloWitchZ.ttf", 50);
+
   main = new Menu();
   boutonRetour = new Bouton("", Bouton.FLECHE);
-  
+
+  fondCommandes = loadImage("Commandes.png");
+
   InitParticles();
 
   SinOsc sin = new SinOsc(this);
@@ -142,7 +151,18 @@ void draw() {
       noTint();
     }
   } else if (ecran == COMMANDES) {
-    background (0);
+    image(fondCommandes, 0, 0);
+    textFont(hallo);
+    textSize(80);
+    textAlign(CENTER, CENTER);
+    fill(255, 127, 0);
+    text("Commandes", width/2, 70);
+
+    textFont(lora);
+    textAlign(CENTER, CENTER);
+    textSize(22);
+    fill(255, 127, 0);
+    text("OBJECTIF : Attraper 5 bonbons pour obtenir la victoire en évitant les citrouilles.", 450, 450);
     boutonRetour.Render();
   }
 }
